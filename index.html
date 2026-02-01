@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Yandex + SEO basics -->
-  <title>Шашлыкoff — меню, цены и доставка • заказ через Telegram</title>
-  <meta name="description" content="Шашлыкoff — меню, цены и детали доставки. Заказ по ссылке в Telegram. Доставка и самовывоз." />
+  <title>Шашлыков — меню, цены и доставка по Севастополю • заказ через Telegram</title>
+  <meta name="description" content="Шашлыков — меню, цены и детали доставки по Севастополю. Заказ по ссылке в Telegram. Доставка." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://shashlykoff.github.io/shashlykoff/" />
 
-  <!-- Social preview (optional but nice) -->
+  <!-- Social preview -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="Шашлыкoff" />
+  <meta property="og:title" content="Шашлыков" />
   <meta property="og:description" content="Меню, цены и детали доставки — в Telegram-канале. Заказ по ссылке в Telegram." />
   <meta property="og:url" content="https://shashlykoff.github.io/shashlykoff/" />
 
@@ -108,13 +108,14 @@
       font-size: 14px;
       transition: transform .12s ease, background .12s ease;
       white-space: nowrap;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn:hover{
       transform: translateY(-1px);
       background: rgba(255,255,255,.08);
     }
 
-    /* Visible keywords for Yandex (kept subtle) */
     .seo{
       border-top: 1px solid var(--line);
       padding-top: 12px;
@@ -133,35 +134,60 @@
       .btn:hover{ transform:none; }
     }
   </style>
+
+  <script>
+    // Tries to open Telegram app (tg://), falls back to https://t.me/...
+    function openTelegram(username) {
+      const web = `https://t.me/${username}`;
+      const deep = `tg://resolve?domain=${username}`;
+
+      const start = Date.now();
+      window.location.href = deep;
+
+      setTimeout(() => {
+        // If still on page, likely deep link didn't open an app -> fallback to web
+        if (Date.now() - start < 1600) {
+          window.open(web, "_blank", "noopener,noreferrer");
+        }
+      }, 700);
+
+      return false; // prevent default navigation
+    }
+  </script>
 </head>
 
 <body>
-  <main aria-label="Шашлыкoff — меню, цены, доставка и заказ">
-    <!-- Put your photo next to index.html and name it image.png (or change to image.jpg if needed) -->
+  <main aria-label="Шашлыков — меню, цены, доставка по Севастополю и заказ">
     <div class="photo">
-      <img src="image.png" alt="Шашлык — меню и доставка" />
+      <img src="image.png" alt="Шашлыков — меню и доставка" />
     </div>
 
     <section class="content">
       <header>
-        <h1>Шашлыкoff</h1>
-        <p class="lead">Меню, цены и детали доставки — в Telegram-канале.</p>
+        <h1>Шашлыков</h1>
+        <p class="lead">Меню, цены и детали доставки по Севастополю — в Telegram-канале.</p>
       </header>
 
-      <div class="actions" aria-label="Ссылки Telegram">
-        <!-- Replace with your real Telegram channel link -->
-        <a class="btn" href="https://t.me/shashlykov1" target="_blank" rel="noreferrer">
+      <div class="actions" aria-label="Ссылки Telegram Шашлыков">
+        <a class="btn"
+           href="https://t.me/shashlykov1"
+           target="_blank"
+           rel="noopener noreferrer"
+           onclick="return openTelegram('shashlykov1');">
           Telegram-канал
         </a>
 
-        <!-- Replace with your real order link (chat/bot/account) -->
-        <a class="btn" href="https://t.me/shashlykov2" target="_blank" rel="noreferrer">
+        <a class="btn"
+           href="https://t.me/shashlykov2"
+           target="_blank"
+           rel="noopener noreferrer"
+           onclick="return openTelegram('shashlykov2');">
           Заказ по ссылке в Telegram
         </a>
       </div>
 
       <div class="seo">
-        Доставка шашлыка • меню и цены • заказ через Telegram • самовывоз и доставка.
+        Шашлыков • доставка шашлыка по Севастополю • меню и цены • заказ через Telegram • доставка.
       </div>
     </section>
   </main>
